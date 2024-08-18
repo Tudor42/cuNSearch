@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.12)
 #Requires cmake 3.12 for first class cuda support with visual studio
 
+if (NOT WIN32)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Xcompiler -fPIC")
+endif()
+
+
 project(cuNSearch LANGUAGES CXX CUDA)
 # Visual studio solution directories.
 set_property(GLOBAL PROPERTY USE_FOLDERS on)
